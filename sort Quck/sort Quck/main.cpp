@@ -1,12 +1,12 @@
-
-  main.cpp
-  sort Quck
-
-  Created by 이동연 on 24/07/2020.
-  Copyright © 2020 litong. All rights reserved.
-
- 시간복잡도 O(n*logn)
- 정렬이 되있으면 O(n^2) - > 이때는 삽입정렬이 제일 빠룸.
+//
+//  main.cpp
+//  sort Quck
+//
+//  Created by 이동연 on 24/07/2020.
+//  Copyright © 2020 litong. All rights reserved.
+//
+// 시간복잡도 O(n*logn)
+// 정렬이 되있으면 O(n^2) - > 이때는 삽입정렬이 제일 빠룸.
 
 
 #include <iostream>
