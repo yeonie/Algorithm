@@ -6,61 +6,51 @@
 //
 
 #include <iostream>
-#define MAX 20
+#include <algorithm>
+#include <vector>
+#define MAX 11
 
 using namespace std;
 
-int N = 0;
-char judger;
-int judge = 1;
-int classify[MAX];
+int N;
+char line[MAX];
+vector<int>v1,v2;
 
-
-void classifier(int x){
-    
-    int i = 0;
-    classify[0]=x;
-    
-        for(i=0; i < 2*N ; i++){
-            if(classify[i+1]==-1){
-                classify[i+2] = x++;
-                if(x>9){
-                    x--;
-                    classifier(x);
-                }
-            }
-            else if(classify[i+1]==-10){
-                classify[i+2] = x--;
-                if(x<0){
-                    x++;
-                    classifier(x);
-                }
-            }
+bool checker(vector<int> &temp){
+    for (int i = 0; i < N; i++) {
+            if (line[i] == '<' && temp[i] > temp[i + 1])
+                return false;
+            if (line[i] == '>' && temp[i] < temp[i + 1])
+                return false;
         }
-    for(int i = 0; i < 2*N;i++){
-        cout<<classify[i];
-    }
+        return true;
 }
-
-
 
 int main(){
     cin>>N;
-    for(int i = 1 ; i < 2*N ; i=i+2){
-        cin>>judger;
-        if(judger == '<'){
-            classify[i] = -1;
-        }
-        else{
-            classify[i] = -10;
-        }
+    for(int i = 0 ; i < N ; i++){
+        cin>>line[i];
     }
     
-    classifier(5);
+    for(int i = 0 ; i <= N ; i++){
+        v1.push_back(i);
+        v2.push_back(9-i);
+    }
     
+    do{
+        if(checker(v1)) break;
+    }while(next_permutation(v1.begin(), v1.end()));
     
+    do{
+        if(checker(v2)) break;
+    }while(prev_permutation(v2.begin(), v2.end()));
     
-    
-    
-    
+    for(int i = 0 ; i <= N ; i++){
+        cout<< v2[i];
+    }
+    printf("\n");
+    for(int i = 0 ; i <= N ; i++){
+        cout<< v1[i];
+    }
 }
+
