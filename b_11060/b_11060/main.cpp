@@ -1,44 +1,37 @@
-//
-//  main.cpp
-//  b_11060
-//
-//  Created by 이동연 on 2021/01/22.
-//
-
 #include <iostream>
-#include <vector>
 
 using namespace std;
 
+int position[1001] = {0,};
+
 int main(){
-    vector<int> doldari;
+    
     int n;
+    cin>>n;
     
-    cin>> n;
+    position[1]=1;
     
-    for(int i = 1 ; i <= n ; i++){
-        int temp;
-        cin>> temp;
-        doldari.push_back(temp);
-    }
-    doldari[1]=1;
-    
-    for(int i = 1 ; i <= n ; i++){
-        if(doldari[i-1]==0){
-            continue;
+    for(int i = 1; i < n ; i++){
+        int score;
+        cin>> score;
+        
+        if(position[i]==0){
+            break;
         }
-        for(int j=1; (j<=doldari[i-1]) && (i-1+j<=1000) ; j++){
-                    if(doldari[i-1+j] > doldari[i-1]+1 || doldari[i-1+j]==0)
-                        doldari[i-1+j] = doldari[i-1]+1;
+        for (int j = 1; j <= score; ++j){
+                    if (i + j > 1000){
+                        break;
+                    }
+                    if (position[i + j] > position[i] + 1 || position[i + j] == 0){
+                        position[i + j] = position[i] + 1;
+                    }
                 }
     }
-    
-    if(doldari[n-1]==0){
-        cout<<-1;
+    if(position[n] == 0){
+            cout << -1 << endl;
     }
     else{
-        cout<<doldari[n-1]-1;
+        cout<< position[n] - 1 << endl;
     }
-    
     
 }
