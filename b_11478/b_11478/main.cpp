@@ -7,40 +7,20 @@
 
 #include <iostream>
 #include <string>
+#include <algorithm>
 #include <set>
 
 using namespace std;
 
+
 int main(){
-    string str;
-    set<string>strset;
-    
-    cin>> str;
-    
-    set<string>::iterator iter;
-    
-    for(int i = 0 ; i< str.size();i++){
-        for(int j = 1 ; j<=str.size()-i;j++){
-            string temp = str.substr(i,j);
-            strset.insert(temp);
+    string s;
+    set<string>strSet;
+    cin>>s;
+    for(int i = 0 ; i < s.length() ; i++){
+        for(int j = 1 ; j <= s.length()-i ; j++){
+            strSet.insert(s.substr(i,j));
         }
     }
-    
-    cout<<strset.size()<<endl;
-
-    
-    
+    cout<<strSet.size();
 }
-//5개일 때 12개
-//4개일 때 10개
-//3개일 때 5개
-//2개일 때 3개
-
-
-//abab
-
-//a b a b ab ba ab aba bab abab
-
-//aba
-
-//a b a ab ba aba
