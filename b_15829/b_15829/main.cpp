@@ -9,6 +9,8 @@
 #include <string>
 #include <cmath>
 
+unsigned long long MOD = 1234567891;
+
 using namespace std;
 
 int main(){
@@ -23,8 +25,15 @@ int main(){
     cin>>str;
 
     for(int i = 0 ; i < n ; i++){
-        str[i] = str[i]-96;
-        sum+=str[i]*pow(31,i);
+        long long temp = str[i] - 96;
+//        cout<<temp<<endl;
+        for(int j = 0 ; j < i ; j++){
+            temp *= 31;
+            temp %= MOD;
+        }
+        temp %= MOD;
+        sum += temp;
+        sum %= MOD;
     }
     cout<<sum;
 
